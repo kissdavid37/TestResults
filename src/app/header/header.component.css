@@ -1,0 +1,13 @@
+/* app.component.css */
+
+.navbar-brand {
+  font-size: 24px;
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 18px;
+}
+
+.nav-item.active>a {
+  color: rgb(197, 168, 130) !important;
+}
