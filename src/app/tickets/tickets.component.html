@@ -5,6 +5,18 @@
       <div class="d-flex justify-content-between">
         <h2 style="color: rgb(197, 168, 130);">Tickets</h2>
       </div>
+      <form [formGroup]="signupForm"
+        (ngSubmit)="onCreateTicket(signupForm.get('ticketName').value,signupForm.get('ticketLink').value)">
+        <div class="input-group mb-3">
+          <div class="form-group-sm ">
+            <input class="form-control" placeholder="Ticket Name" formControlName="ticketName">
+          </div>
+          <div class="form-group-sm ">
+            <input class="form-control" placeholder="Ticket Link" formControlName="ticketLink">
+          </div>
+          <button class="btn btn-create" [disabled]="!signupForm.valid" type="submit">Create Ticket</button>
+        </div>
+      </form>
       <div class="alert alert-danger" *ngIf="error">
         <p style="color: rgb(197, 168, 130);">{{errorMessage}}</p>
       </div>
@@ -14,7 +26,7 @@
         <li [ngClass]="getResolvedState(ticket)"
           class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let ticket of tickets">
           <strong>{{ticket.ticketName}}</strong>
-          <a href="{{ticket.ticketLink}}" target="_blank"> <strong>Devops bug</strong></a>
+          <a href="{{ticket.ticketLink}}" target="_blank"> <strong>Devops bug link</strong></a>
           <div class="d-flex justify-content-between">
             <button (click)="onUpdateResolvedState(0,ticket.ticketName)" class="btn btn-danger">X</button>
             <button (click)="onUpdateResolvedState(1,ticket.ticketName)" class="btn btn-success">✓</button>

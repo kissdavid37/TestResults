@@ -19,7 +19,6 @@ export class TestrunsService {
       tcID: id,
       success: success
     }
-    console.log(version + ' ' + ' ' + id + ' ' + success)
     return this.http.put('http://127.0.0.1:5000/testruns', requestBody)
   }
 

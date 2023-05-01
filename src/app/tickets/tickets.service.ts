@@ -18,6 +18,15 @@ export class TicketsService {
       resolved: resolved,
       ticketName: ticketName
     }
-    return this.http.put(`http://127.0.0.1:5000/tickets/${tcID}`, requestbody)
+    return this.http.put(`http://127.0.0.1:5000/tickets/${tcID}`, requestbody);
+  }
+
+  createTicket(tcID: number, ticketName: string, ticketLink: string) {
+    const requestBody = {
+      tcID: tcID,
+      ticketName: ticketName,
+      ticketLink: ticketLink
+    }
+    return this.http.post(`http://127.0.0.1:5000/tickets/${tcID}`, requestBody);
   }
 }
