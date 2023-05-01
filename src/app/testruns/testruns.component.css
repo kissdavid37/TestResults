@@ -9,6 +9,7 @@ li {
 
 .list-success {
   background-color: green;
+  color: rgb(197, 168, 130);
 }
 
 .list-fail {
@@ -18,6 +19,7 @@ li {
 
 .list-notrun {
   background-color: grey;
+  color: rgb(197, 168, 130);
 }
 
 .validator {

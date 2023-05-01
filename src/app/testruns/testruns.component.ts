@@ -22,7 +22,7 @@ export class TestrunsComponent implements OnInit {
   signupForm: FormGroup;
   @ViewChild('versionRef') versionRef: ElementRef;
 
-  constructor(private http: HttpClient, private testrunService: TestrunsService, private testcaseService: TestcasesService) {
+  constructor(private testrunService: TestrunsService, private testcaseService: TestcasesService) {
   }
 
   ngOnInit(): void {

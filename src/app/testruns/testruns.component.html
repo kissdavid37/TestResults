@@ -33,19 +33,24 @@
       <hr>
       <p *ngIf="testRuns.length<1 && !isFetching" style="color: rgb(197, 168, 130);">No Test Results available</p>
       <ul class="list-group-sm scroll" *ngIf="testRuns.length>=1 && !isFetching">
-        <a href="#" *ngFor="let testrun of testRuns|testrunFilter:filteredVersion">
-          <li class="list-group-item d-flex justify-content-between align-items-center"
-            [ngClass]="getSuccessState(testrun)">
-            <strong>{{testrun.version}}</strong>
-            <strong>{{testrun.name}}</strong>
-            <div class="d-flex justify-content-between">
-              <button (click)="onUpdateTestResult(testrun.version,testrun.tcID,-1)" class="btn btn-danger">X</button>
-              <button (click)="onUpdateTestResult(testrun.version,testrun.tcID,1)" class="btn btn-success">✓</button>
-              <button (click)="onUpdateTestResult(testrun.version,testrun.tcID,0)" class="btn btn-secondary">-</button>
-            </div>
 
-          </li>
-        </a>
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+          [ngClass]="getSuccessState(testrun)" *ngFor="let testrun of testRuns|testrunFilter:filteredVersion">
+          <a style="text-decoration:none" [ngClass]="getSuccessState(testrun)"
+            [routerLink]="['/tickets',testrun.version,testrun.tcID]">
+            <strong>{{testrun.version}}</strong>
+          </a>
+          <a style="text-decoration:none" [ngClass]="getSuccessState(testrun)" [routerLink]="['/tickets',testrun.tcID]">
+            <strong>{{testrun.name}}</strong>
+          </a>
+          <div class="d-flex justify-content-between">
+            <button (click)="onUpdateTestResult(testrun.version,testrun.tcID,-1)" class="btn btn-danger">X</button>
+            <button (click)="onUpdateTestResult(testrun.version,testrun.tcID,1)" class="btn btn-success">✓</button>
+            <button (click)="onUpdateTestResult(testrun.version,testrun.tcID,0)" class="btn btn-secondary">-</button>
+          </div>
+
+        </li>
+
       </ul>
       <p *ngIf="isFetching" style="color: rgb(197, 168, 130);">Loading</p>
     </div>

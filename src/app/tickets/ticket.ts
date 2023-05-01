@@ -1,5 +1,6 @@
 export interface Ticket {
-  version: number;
-  testcaseID: number;
+  tcID: number;
   ticketLink: string;
+  ticketName: string;
+  resolved: number;
 }
