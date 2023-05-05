@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -29,15 +31,35 @@ export class AuthComponent implements OnInit {
     })
   }
 
-  onLogin(username: string, password: string) {
-    this.authService.login(username, password).subscribe({
+  onSubmit(username: string, password: string) {
+    let authObs: Observable<any>;
+
+    if (this.isLoginMode) {
+      this.isLoading = true;
+      authObs = this.authService.login(username, password);
+    }
+    else {
+      authObs = this.authService.register(username, password);
+    }
+    authObs.subscribe({
       next: (resData) => {
         console.log(resData);
-        localStorage.setItem('token', resData['token']);
-        localStorage.setItem('exp', resData['exp'])
-        localStorage.setItem('admin', resData['admin'])
-        this.router.navigate(['/testruns']);
+        if (this.isLoginMode) {
+          localStorage.setItem('token', resData['token']);
+          this.authService.isLoggedIn.next(true)
+          this.router.navigate(['/testruns']);
+        }
+        else {
+          this.isLoginMode = true
+        }
         this.signupForm.reset();
+      },
+      error: (e: HttpErrorResponse) => {
+        this.isLoading = false;
+        console.log(e);
+        this.error = true;
+        this.signupForm.reset();
+        this.errorMessage = e.error
       }
     })
   }

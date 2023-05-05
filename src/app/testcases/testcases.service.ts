@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { TestCase } from './test-case';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestcasesService {
-
+  baseUrl: string = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
 
@@ -18,7 +19,7 @@ export class TestcasesService {
         'x-access-token': token
       })
     }
-    return this.http.get<TestCase[]>('http://127.0.0.1:5000/testcases', httpOptions);
+    return this.http.get<TestCase[]>(`${this.baseUrl}/testcases`, httpOptions);
   }
 
   createTestcase(testcaseName: string) {
@@ -31,7 +32,7 @@ export class TestcasesService {
         'x-access-token': token
       })
     }
-    return this.http.post("http://127.0.0.1:5000/testcases", requestBody, httpOptions);
+    return this.http.post(`${this.baseUrl}/testcases`, requestBody, httpOptions);
   }
 
   deleteTestcase(testcaseId: number) {
@@ -43,7 +44,7 @@ export class TestcasesService {
       }),
       body: JSON.stringify({ id: testcaseId }),
     }
-    return this.http.delete('http://127.0.0.1:5000/testcases', options);
+    return this.http.delete(`${this.baseUrl}/testcases`, options);
   }
 }
 
