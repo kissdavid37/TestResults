@@ -8,10 +8,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item">
+        <a class="nav-link" style="cursor: pointer;" (click)="onLogout()" *ngIf="isLoggedIn">Log out</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
         <a class=" nav-link" routerLink="testruns">Testruns</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
         <a class="nav-link" routerLink="testcases">Testcases</a>
       </li>
     </ul>

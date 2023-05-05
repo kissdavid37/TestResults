@@ -1,0 +1,22 @@
+.form-container {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+}
+
+.container-fluid {
+  background-color: rgb(6, 22, 36);
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+}
+
+form {
+  color: rgb(197, 168, 130);
+  font-weight: bold;
+}
+
+.spinner {
+  text-align: center;
+}
