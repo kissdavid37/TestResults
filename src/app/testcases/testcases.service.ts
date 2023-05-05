@@ -12,20 +12,34 @@ export class TestcasesService {
 
 
   getTestCases() {
-    return this.http.get<TestCase[]>('http://127.0.0.1:5000/testcases');
+    const token = localStorage.getItem('token')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': token
+      })
+    }
+    return this.http.get<TestCase[]>('http://127.0.0.1:5000/testcases', httpOptions);
   }
 
   createTestcase(testcaseName: string) {
     const requestBody = {
       name: testcaseName
     }
-    return this.http.post("http://127.0.0.1:5000/testcases", requestBody);
+    const token = localStorage.getItem('token')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': token
+      })
+    }
+    return this.http.post("http://127.0.0.1:5000/testcases", requestBody, httpOptions);
   }
 
   deleteTestcase(testcaseId: number) {
+    const token = localStorage.getItem('token')
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        'x-access-token': token
       }),
       body: JSON.stringify({ id: testcaseId }),
     }

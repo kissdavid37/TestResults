@@ -13,6 +13,7 @@ import { TestcaseFilterPipe } from './testcases/testcase-filter.pipe';
 import { CommonModule } from '@angular/common';
 import { TestrunFilterPipe } from './testruns/testrun-filter.pipe';
 import { TicketsComponent } from './tickets/tickets.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TicketsComponent } from './tickets/tickets.component';
     TestcaseFilterPipe,
     TestrunFilterPipe,
     TicketsComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
