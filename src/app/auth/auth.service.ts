@@ -20,10 +20,11 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, requestBody)
   }
 
-  register(username: string, password: string) {
+  register(username: string, password: string, confirmPassword: string) {
     const requestBody = {
       username: username,
-      password: password
+      password: password,
+      confirm: confirmPassword
     }
 
     return this.http.post(`${this.baseUrl}/register`, requestBody)
