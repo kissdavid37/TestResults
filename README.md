@@ -1,27 +1,17 @@
 # TestResults
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+## How to Run the app
 
-## Development server
+Firstly you have to instal angular cli on your environment, than run **npm install**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Start
 
-## Code scaffolding
+In the **environment.ts** file you have to replace the **baseUrl** to your backends url and port
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Then run the command: **ng serve --host YOUR BACKENDS IP ADRESS ** the default host is localhost
 
-## Build
+### For production Server:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**ng build --configuration=production**
+**ng serve --configuration=production**
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
