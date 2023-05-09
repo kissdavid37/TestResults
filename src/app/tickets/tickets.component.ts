@@ -62,6 +62,7 @@ export class TicketsComponent implements OnInit {
       next: () => {
         this.signupForm.reset();
         this.onGetTickets(this.route.snapshot.params.id);
+        this.error=false;
       },
       error: (e: HttpErrorResponse) => {
         this.errorMessage = e.error;

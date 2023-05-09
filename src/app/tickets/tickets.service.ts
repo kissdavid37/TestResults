@@ -45,6 +45,6 @@ export class TicketsService {
       ticketName: ticketName,
       ticketLink: ticketLink
     }
-    return this.http.post(`http://127.0.0.1:5000/tickets/${tcID}`, requestBody);
+    return this.http.post(`http://127.0.0.1:5000/tickets/${tcID}`, requestBody,httpOptions);
   }
 }
