@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthGuard } from './auth.guard';
 import { Router } from '@angular/router';
@@ -39,13 +38,6 @@ export class AuthService {
     if(this.tokenExpirationTimer){
       clearTimeout(this.tokenExpirationTimer);
     }
-  }
-
-  autoLogout(expTime:number){
-   this.tokenExpirationTimer= setTimeout(() => {
-      this.logout();
-    }, expTime);
-  
   }
 }
 

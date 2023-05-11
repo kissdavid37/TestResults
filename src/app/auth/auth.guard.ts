@@ -9,8 +9,6 @@ import jwt_decode from 'jwt-decode';
 export class AuthGuard implements CanActivate {
   isLoggedIn = new BehaviorSubject<boolean>(false);
   constructor(private router: Router) {
-
-
   }
   canActivate(
     route: ActivatedRouteSnapshot,
