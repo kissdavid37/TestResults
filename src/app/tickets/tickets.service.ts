@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ticket } from './ticket';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketsService {
-
+  baseUrl: string = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
   getTickets(tcID: number) {
@@ -16,7 +17,7 @@ export class TicketsService {
         'x-access-token': token
       })
     }
-    return this.http.get<Ticket[]>(`http://127.0.0.1:5000/tickets/${tcID}`, httpOptions);
+    return this.http.get<Ticket[]>(`${this.baseUrl}/tickets/${tcID}`, httpOptions);
   }
 
   updateTicket(tcID: number, resolved: number, ticketName: string) {
@@ -30,7 +31,7 @@ export class TicketsService {
         'x-access-token': token
       })
     }
-    return this.http.put(`http://127.0.0.1:5000/tickets/${tcID}`, requestbody, httpOptions);
+    return this.http.put(`${this.baseUrl}/tickets/${tcID}`, requestbody, httpOptions);
   }
 
   createTicket(tcID: number, ticketName: string, ticketLink: string) {
@@ -45,6 +46,6 @@ export class TicketsService {
       ticketName: ticketName,
       ticketLink: ticketLink
     }
-    return this.http.post(`http://127.0.0.1:5000/tickets/${tcID}`, requestBody,httpOptions);
+    return this.http.post(`${this.baseUrl}/tickets/${tcID}`, requestBody,httpOptions);
   }
 }
