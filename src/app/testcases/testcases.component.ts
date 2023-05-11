@@ -1,11 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {  Component } from '@angular/core';
 import { TestcasesService } from './testcases.service';
 import { OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { TestCase } from './test-case';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-testcases',
@@ -52,6 +50,7 @@ export class TestcasesComponent implements OnInit {
         }
       })
   }
+
   onDeleteTestcase(testcaseId: number) {
     console.log('onDeleteTestcase');
     this.testcaseService.deleteTestcase(testcaseId).subscribe(response => {
@@ -70,24 +69,6 @@ export class TestcasesComponent implements OnInit {
       })
   }
 
-  // onDeleteTestcase(testcaseId: number) {
-  //   console.log('onDeleteTestcase');
-  //   this.testcaseService.deleteTestcase(testcaseId).subscribe({
-  //     next: () => {
-  //       console.log("valami");
-  //       this.onGetTestcases()
-  //     },
-  //     error: (e: HttpErrorResponse) => {
-  //       console.log('Hiba');
-  //     },
-  //   });
-
-
-  //}
-
-  onFilterTestCaseName(tcName: string) {
-
-  }
 
   onGetTestcases() {
     this.testcaseService.getTestCases().subscribe(tc => {

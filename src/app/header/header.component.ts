@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -7,19 +6,31 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Input() isLoggedIn: boolean
-
-  constructor(private router: Router, private authService: AuthService) {
+  isCollapsed=false;
+  collapsed:string='collapse'
+  
+  constructor(private authService:AuthService) {
 
   }
-  ngOnInit(): void {
-
-  }
-
   onLogout() {
-    localStorage.removeItem('token');
-    this.authService.isLoggedIn.next(false)
-    this.router.navigate(['login'])
+    this.authService.logout();
+  }
+
+  autoLogout(expDate:number){
+    setTimeout(() => {
+      console.log('Logged out!')
+      this.onLogout();
+    }, expDate);
+  }
+
+  onToggle(){
+    if(this.collapsed==='collapse'){
+      this.collapsed='open';
+    }
+    else{
+      this.collapsed='collapse'
+    }
   }
 }

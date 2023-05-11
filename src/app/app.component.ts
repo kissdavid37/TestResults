@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,10 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
   isLoggedIn = false;
 
-  constructor(private authService: AuthService) {
-    this.authService.isLoggedIn.subscribe(value => {
-      this.isLoggedIn = value;
-    })
-
+  constructor(private authGuard: AuthGuard) {
+     this.authGuard.isLoggedIn.subscribe(value => {
+       this.isLoggedIn = value;
+     })
   }
 }
 

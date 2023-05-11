@@ -32,7 +32,7 @@
           <button class="deleteButton" (click)="onDeleteTestcase(testcase.id)">X</button>
         </li>
       </ul>
-      <p *ngIf="isFetching" style="color: rgb(197, 168, 130);">Loading</p>
+      <app-loading-spinner *ngIf="isFetching"></app-loading-spinner>
     </div>
   </div>
 </div>

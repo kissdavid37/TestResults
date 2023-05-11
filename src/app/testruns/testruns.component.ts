@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TestrunsService } from './testruns.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {HttpErrorResponse } from '@angular/common/http';
 import { TestRun } from './test-run';
 import { TestcasesService } from '../testcases/testcases.service';
 import { TestCase } from '../testcases/test-case';

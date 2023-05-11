@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
+  isLoggedIn = new BehaviorSubject<boolean>(false);
   constructor(private router: Router) {
 
 
@@ -25,6 +25,8 @@ export class AuthGuard implements CanActivate {
       return this.router.navigate(['login']);
     }
     else {
+      this.isLoggedIn.next(true);
+      
       return true;
     }
   }

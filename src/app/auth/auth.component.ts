@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthGuard } from './auth.guard';
 
 @Component({
   selector: 'app-auth',
@@ -16,8 +17,9 @@ export class AuthComponent implements OnInit {
   error: Boolean = false;
   errorMessage: string = null;
   isLoading: boolean = false;
+  expTime:number;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,private authGuard:AuthGuard) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -42,7 +44,8 @@ export class AuthComponent implements OnInit {
         console.log(resData);
         if (this.isLoginMode) {
           localStorage.setItem('token', resData['token']);
-          this.authService.isLoggedIn.next(true)
+
+          this.authGuard.isLoggedIn.next(true)
           this.router.navigate(['/testruns']);
           this.removeRequiredValidator('confirmPassword');
         }
