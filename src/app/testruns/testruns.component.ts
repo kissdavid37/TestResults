@@ -35,7 +35,6 @@ export class TestrunsComponent implements OnInit {
   }
 
   onAddTestRun(version: number, name: string) {
-    console.log(version, name)
     this.testrunService.addTestrun(version, name).subscribe({
       next: () => {
         this.onGetTestRuns();
@@ -43,7 +42,7 @@ export class TestrunsComponent implements OnInit {
       },
       error: (e: HttpErrorResponse) => {
         this.error = !this.error
-        this.errorMessage = e.message;
+        this.errorMessage = e.error;
         console.log(e);
       }
     });

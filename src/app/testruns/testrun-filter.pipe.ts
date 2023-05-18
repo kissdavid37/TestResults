@@ -11,7 +11,6 @@ export class TestrunFilterPipe implements PipeTransform {
     if (!value) return null;
     if (!args) return value;
     if (args == 'Choose...') return value
-    console.log(args)
     return value.filter(testrun => testrun.version == args)
   }
 
