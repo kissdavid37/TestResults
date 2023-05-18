@@ -21,7 +21,7 @@
               <option *ngFor="let testcase of testcases">{{testcase.name}}</option>
             </datalist>
           </div>
-          <button class="btn btn-create" [disabled]="!signupForm.valid" type="submit">Add Testcase to version</button>
+          <button class="btn btn-create"  type="submit">Add Testcases </button>
         </div>
 
         <div class="alert alert-danger" *ngIf="error">
